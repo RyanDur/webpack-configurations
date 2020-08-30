@@ -1,1 +1,3 @@
-export * from 'loaders';
+const loaders = require('loaders');
+
+module.exports = loaders
