@@ -1,8 +1,9 @@
 {
-  "name": "webpack-configs",
+  "name": "@ryandur/webpack-configs",
   "version": "1.0.0",
   "description": "some base configurations for webpack",
   "main": "index.js",
+  "private": false,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RyanDur/webpack-configurations.git"
@@ -12,5 +13,15 @@
   },
   "keywords": [],
   "author": "Ryan Durling",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "cssnano": "^4.1.10",
+    "postcss-autoreset": "^2.0.2",
+    "postcss-import": "^12.0.1",
+    "postcss-initial": "^3.0.2",
+    "postcss-preset-env": "^6.7.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.7.0"
+  }
 }
