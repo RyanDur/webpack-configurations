@@ -15,11 +15,14 @@
   "author": "Ryan Durling",
   "license": "ISC",
   "dependencies": {
+    "css-loader": "^4.2.2",
     "cssnano": "^4.1.10",
     "postcss-autoreset": "^2.0.2",
     "postcss-import": "^12.0.1",
     "postcss-initial": "^3.0.2",
-    "postcss-preset-env": "^6.7.0"
+    "postcss-preset-env": "^6.7.0",
+    "style-loader": "^1.2.1",
+    "url-loader": "^4.1.0"
   },
   "devDependencies": {
     "eslint": "^7.7.0"
