@@ -1,6 +1,18 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 exports.configCSS = ({sourceMap, devMode: production}) => ({
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true,
+        },
+      },
+    },
+  },
   module: {
     rules: [{
       test: /\.css$/,
@@ -37,7 +49,8 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: production ? '[name].[hash].css' : '[name].css'
+      filename: '[name].[contenthash].css',
+      chunkFilename: '[id].[contenthash].css',
     })
   ]
 });
