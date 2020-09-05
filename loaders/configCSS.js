@@ -29,7 +29,10 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
             ]
           }
         }
-      ]
+      ],
+      exclude: /node_modules/,
+      include: /src/,
+      sideEffects: true
     }]
   },
   plugins: [

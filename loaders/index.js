@@ -1,4 +1,4 @@
-const {configCSS} = require('./loadCSS');
+const {configCSS} = require('./configCSS');
 const {loadImages} = require('./loadImages');
 const {loadTS} = require('./loadTS')
 
