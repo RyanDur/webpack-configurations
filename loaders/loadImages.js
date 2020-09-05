@@ -1,4 +1,8 @@
 exports.loadImages = () => ({
-    test: /\.svg$/,
-    loader: 'url-loader'
+  module: {
+    rules: [{
+      test: /\.svg$/,
+      loader: 'url-loader'
+    }]
+  }
 });
