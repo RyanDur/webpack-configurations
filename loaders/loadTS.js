@@ -1,5 +1,9 @@
 exports.loadTS = () => ({
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/
+  module: {
+    rules: [{
+      test: /\.tsx?$/,
+      use: 'ts-loader',
+      exclude: /node_modules/
+    }]
+  }
 });

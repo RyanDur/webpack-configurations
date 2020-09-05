@@ -1,55 +1,22 @@
 {
-  "env": {
-    "browser": true,
-    "es6": true,
-    "commonjs": true,
-    "node": true
-  },
-  "extends": [
-    "plugin:@typescript-eslint/eslint-recommended"
-  ],
-  "globals": {
-    "Atomics": "readonly",
-    "SharedArrayBuffer": "readonly"
-  },
-  "overrides": [
-    {
-      "files": [
-        "*.json"
-      ],
-      "rules": {
-        "comma-dangle": [
-          "error",
-          "never"
-        ],
-        "quotes": [
-          "error",
-          "double"
-        ],
-        "semi": [
-          "error",
-          "never"
-        ]
-      }
-    }
-  ],
-  "parser": "@typescript-eslint/parser",
+  "extends": "eslint:recommended",
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": false,
+      "experimentalObjectRestSpread": true
+    }
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "env": {
+    "shared-node-browser": true,
+    "jasmine": true,
+    "commonjs": true
+  },
   "rules": {
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "eol-last": 0,
-    "no-multiple-empty-lines": [
+    "indent": [
       "error",
-      {
-        "max": 1,
-        "maxEOF": 0
-      }
+      2
     ]
   }
 }
