@@ -1,23 +1,18 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 exports.configCSS = ({sourceMap, devMode: production}) => ({
-  optimization: {
-    splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'styles',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true,
-        },
-      },
-    },
-  },
   module: {
     rules: [{
       test: /\.css$/,
       use: [
-        production ? MiniCssExtractPlugin.loader : 'style-loader',
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: !production,
+            reloadAll: true,
+            sourceMap
+          }
+        },
         {loader: 'css-loader', options: {importLoaders: 1, sourceMap}},
         {
           loader: 'postcss-loader',
