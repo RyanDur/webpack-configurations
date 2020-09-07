@@ -6,7 +6,7 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
       test: /\.css$/,
       use: [
         {
-          loader: production ? MiniCssExtractPlugin.loader : 'style-loader',
+          loader: MiniCssExtractPlugin.loader,
           options: {
             hmr: !production,
             reloadAll: true,
@@ -38,8 +38,7 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
         }
       ],
       exclude: /node_modules/,
-      include: /src/,
-      sideEffects: true
+      include: /src/
     }]
   },
   plugins: [
