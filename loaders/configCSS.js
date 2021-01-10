@@ -1,4 +1,7 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PostCSSAssetsPlugin = require('postcss-assets-webpack-plugin');
+const mqpacker = require('mqpacker');
+const cssnano = require('cssnano');
 
 exports.configCSS = ({sourceMap, devMode: production}) => ({
   module: {
@@ -13,7 +16,15 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
             sourceMap
           }
         },
-        {loader: 'css-loader', options: {importLoaders: 1, sourceMap}},
+        {
+          loader: 'css-loader', options: {
+            modules: true,
+            sourceMap,
+            importLoaders: 1,
+            minimize: false,
+            localIdentName: '[name]_[local]_[sha512:hash:base64:3]'
+          }
+        },
         {
           loader: 'postcss-loader',
           options: {
@@ -21,7 +32,7 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
             sourceMap,
             plugins: (loader) => [
               require('postcss-import')({root: loader.resourcePath}),
-              require('postcss-url')({
+              require('postcss-smart-asset')({
                 url: 'rebase'
               }),
               require('postcss-autoreset')(),
@@ -32,7 +43,12 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
                   'nesting-rules': true
                 }
               }),
-              require('cssnano')()
+              cssnano,
+              require('postcss-property-lookup'),
+              require('postcss-advanced-variables')({
+                disable: '@if, @else, @for, @each'
+              }),
+              require("postcss-modules-extend-rule/pre")
             ]
           }
         }
@@ -45,6 +61,15 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css',
       chunkFilename: '[id].[contenthash].css',
-    })
+    }),
+    new PostCSSAssetsPlugin({
+      test: /\.css$/,
+      log: true,
+      plugins: [
+        mqpacker,
+        cssnano,
+        require("postcss-modules-extend-rule/post")
+      ],
+    }),
   ]
 });
