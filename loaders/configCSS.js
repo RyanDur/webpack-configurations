@@ -32,7 +32,9 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
             sourceMap,
             plugins: (loader) => [
               require('postcss-import')({root: loader.resourcePath}),
-              require('postcss-url')(),
+              require('postcss-url')({
+                url: 'rebase'
+              }),
               require('postcss-autoreset')(),
               require('postcss-initial')(),
               require('postcss-preset-env')({
