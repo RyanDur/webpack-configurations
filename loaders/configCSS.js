@@ -18,10 +18,7 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
         },
         {
           loader: 'css-loader', options: {
-            modules: true,
-            sourceMap,
-            importLoaders: 1,
-            minimize: false
+            sourceMap
           }
         },
         {
