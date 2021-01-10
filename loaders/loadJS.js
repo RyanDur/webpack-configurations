@@ -1,4 +1,3 @@
-
 exports.loadJS = () => ({
   module: {
     rules: [
@@ -13,5 +12,8 @@ exports.loadJS = () => ({
         }
       }
     ]
-  }
+  },
+  resolve: {
+    extensions: ['*', '.jsx', '.js']
+  },
 });
