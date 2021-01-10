@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "3.0.5",
+  "version": "3.0.6",
   "description": "some base configurations for webpack",
   "main": "index.js",
   "private": false,

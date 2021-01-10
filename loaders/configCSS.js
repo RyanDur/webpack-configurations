@@ -21,8 +21,7 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
             modules: true,
             sourceMap,
             importLoaders: 1,
-            minimize: false,
-            localIdentName: '[name]_[local]_[sha512:hash:base64:3]'
+            minimize: false
           }
         },
         {
@@ -32,9 +31,7 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
             sourceMap,
             plugins: (loader) => [
               require('postcss-import')({root: loader.resourcePath}),
-              require('postcss-url')({
-                url: 'rebase'
-              }),
+              require('postcss-url')(),
               require('postcss-autoreset')(),
               require('postcss-initial')(),
               require('postcss-preset-env')({
