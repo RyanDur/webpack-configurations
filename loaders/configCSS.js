@@ -1,5 +1,6 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostCSSAssetsPlugin = require('postcss-assets-webpack-plugin');
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const mqpacker = require('mqpacker');
 const cssnano = require('cssnano');
 
