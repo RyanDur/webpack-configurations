@@ -3,7 +3,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "3.0.12",
+  "version": "3.0.13",
   "description": "some base configurations for webpack",
   "main": "index.js",
   "private": false,
@@ -44,6 +44,7 @@
     "webpack-merge": "^5.7.3"
   },
   "devDependencies": {
-    "eslint": "^7.16.0"
+    "eslint": "^7.16.0",
+    "webpack-dev-server": "^3.11.1"
   }
 }

@@ -11,45 +11,50 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
         {
           loader: MiniCssExtractPlugin.loader,
           options: {
-            hmr: !production,
+            hmr: true,
             reloadAll: true,
-            sourceMap
-          }
+            sourceMap: true,
+          },
         },
         {
-          loader: 'css-loader', options: {
-            sourceMap
-          }
+          loader: 'css-loader',
+          options: {
+            importLoaders: 1,
+            sourceMap: true,
+          },
         },
         {
           loader: 'postcss-loader',
           options: {
             ident: 'postcss',
-            sourceMap,
+            sourceMap: true,
             plugins: (loader) => [
-              require('postcss-import')({root: loader.resourcePath}),
-              require('postcss-url')(),
-              require('postcss-autoreset')(),
-              require('postcss-initial')(),
               require('postcss-preset-env')({
                 stage: 3,
                 features: {
-                  'nesting-rules': true
-                }
+                  'nesting-rules': true,
+                },
+              }),
+              require('postcss-initial')(),
+              require('postcss-autoreset')(),
+              require('postcss-url')(),
+              require('postcss-advanced-variables')({
+                disable: '@if, @else, @for, @each',
+              }),
+              require('postcss-import')({ root: loader.resourcePath }),
+              require('postcss-modules-extend-rule/pre'),
+              require('doiuse')({
+                browsers: ['last 2 versions', 'ie >=9', 'Android >= 4'],
+                ignore: ['rem', 'css-boxshadow', 'css-transitions'],
               }),
               cssnano,
-              require('postcss-property-lookup'),
-              require('postcss-advanced-variables')({
-                disable: '@if, @else, @for, @each'
-              }),
-              require("postcss-modules-extend-rule/pre")
-            ]
-          }
-        }
+            ],
+          },
+        },
       ],
       exclude: /node_modules/,
-      include: /src/
-    }]
+      include: /src/,
+    }],
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -62,8 +67,9 @@ exports.configCSS = ({sourceMap, devMode: production}) => ({
       plugins: [
         mqpacker,
         cssnano,
-        require("postcss-modules-extend-rule/post")
+        require('postcss-modules-extend-rule/post'),
       ],
     }),
-  ]
+    new StyleLintPlugin(),
+  ],
 });
