@@ -1,9 +1,6 @@
 {
   "name": "@ryandur/webpack-configs",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "version": "3.0.16",
+  "version": "1.2.0",
   "description": "some base configurations for webpack",
   "main": "index.js",
   "private": false,
