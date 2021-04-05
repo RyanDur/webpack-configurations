@@ -3,12 +3,11 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
-  "version": "3.0.15",
+  "version": "3.0.16",
   "description": "some base configurations for webpack",
   "main": "index.js",
   "private": false,
   "repository": {
-    "type": "git",
     "url": "git+https://github.com/RyanDur/webpack-configurations.git"
   },
   "scripts": {
@@ -42,7 +41,6 @@
     "stylelint": "^13.12.0",
     "stylelint-config-recommended-scss": "^4.2.0",
     "stylelint-config-standard": "^21.0.0",
-    "stylelint-no-browser-hacks": "^1.2.1",
     "stylelint-use-nesting": "^3.0.0",
     "stylelint-webpack-plugin": "^2.1.1",
     "ts-loader": "^8.0.12",
