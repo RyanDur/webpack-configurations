@@ -4,7 +4,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const mqpacker = require('mqpacker');
 const cssnano = require('cssnano');
 
-exports.configCSS = ({sourceMap, devMode: production}) => ({
+exports.configCSS = ({sourceMap, devMode = false}) => ({
   module: {
     rules: [{
       test: /\.css$/,
