@@ -1,9 +1,10 @@
-exports.loadTS = (exclude = /node_modules/) => ({
+exports.loadTS = (options= {exclude: /node_modules/, include: undefined}) => ({
   module: {
     rules: [{
       test: /\.tsx?$/,
       use: 'ts-loader',
-      exclude: exclude
+      exclude: options.exclude,
+      include: options.include
     }]
   },
   resolve: {

@@ -1,10 +1,11 @@
-exports.loadJS = (exclude = /node_modules/) => ({
+exports.loadJS = (options = {exclude: /node_modules/, include: undefined}) => ({
   module: {
     rules: [
       {
         test: /\.m?js$/,
         enforce: "pre",
-        exclude,
+        exclude: options.exclude,
+        include: options.include,
         use: ["source-map-loader", {
           loader: "babel-loader",
           options: {
